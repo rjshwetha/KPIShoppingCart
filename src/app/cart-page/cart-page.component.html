@@ -1,0 +1,81 @@
+
+
+<div class="shopping-cart" >
+    <!-- Title -->
+    <div class="title">
+      Shopping Cart
+    </div>
+ <div>
+   <p *ngIf="!totalPrice" style="text-align:center;margin-top: 50px;">No items selected</p>
+    <table *ngIf="totalPrice">
+      
+        <thead>
+          <tr>
+            <th></th>
+            <th> Item Name</th>
+            <th> Base Price</th>
+            <th> CD available</th>
+            <th> Discount Price</th>
+            <th> Quantity</th>
+
+          </tr>
+          
+        </thead>
+      
+       
+            <tr *ngFor="let item of itemsOnCart">
+                <td><img class="resize" src={{item.Image}}></td>
+                <td>{{item.Name}}</td>
+                <td>{{item.BasePrice}}</td>
+                <td><i class="fa fa-check" style="font-weight: 1000;color:green" *ngIf="item.CompanyDiscount" ></i><i class="fa fa-times-circle-o" style="font-weight: 1000;color:red" *ngIf="!item.CompanyDiscount"></i></td>
+                <td>{{item.DiscountPrice}}</td>
+                <td>{{item.qty}}</td>
+                <td>
+                    
+                     
+                </td>
+            </tr>
+            <tr>
+              <td></td><td></td><td></td><td></td>
+              <p style="float:inline;">Total :{{totalPrice}}</p>
+            </tr>
+            
+              
+                  
+    </table>
+</div>
+  <div class="options">
+    <h3>Proceed To pay with Card
+    <select class="select" style="width:100px;"(change)="onChange($event.target,totalPrice)" >
+      <option >select card</option>
+      <option *ngFor="let x of cards">{{x.bank}}</option>
+    </select></h3>
+    <p *ngIf="cardUsed">Discount for using {{cardUsed}} card is {{discountPriceForCard}}</p>
+    <p *ngIf="cardUsed">Total Amout after using {{cardUsed}} will be {{totalPrice}} </p>
+  </div>
+  <div class="options">
+    <h3>Check if company is providing any discount?<button mat-icon-button (click)="onDownClick()">
+        <i class="material-icons">arrow_downward</i>
+      </button></h3>
+    <table *ngIf="showAvailable">
+      <tr>
+        <th>Item</th>
+        <th>Item Name</th>
+        <th>Availability of CD</th>
+        
+      </tr>
+        <tr *ngFor="let item of itemsOnCart" >
+          <td><img class="resize" src={{item.Image}}></td>
+            <td>{{item.Name}}</td>
+            <td><p *ngIf='item.CompanyDiscount' style="color:green;">Available</p><p *ngIf='!item.CompanyDiscount' style="color:red;">Not Available</p></td>
+            <td *ngIf='item.CompanyDiscount'>Offer valid from{{item.startDate}} till {{item.endDate}}</td>
+            <td *ngIf='item.CompanyDiscount'>Offer percentage is {{item.cdp}}</td>
+        </tr>
+    </table>
+  </div>
+  <div class="options">
+    <button class="buttonsize" (click)="backfromCart()">Back</button>
+  </div>
+ 
+  
+  </div>

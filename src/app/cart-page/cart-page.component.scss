@@ -1,0 +1,43 @@
+
+.title{
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    font-size: large;
+  }
+  
+  .i{
+    font-size:xx-small;
+  }
+  
+  .resize {
+    width: 50px;
+    height: 50px;
+  }
+  table{
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  td{
+    width:100px;
+  }
+  .options{
+    width: 100%;
+    margin-top:50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  .select{
+    width:200px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    text-align:center;
+    margin-left:200px;
+  }
+  .buttonsize{
+    width: 80px;
+    height: 40px;
+    float:right
+  }
+  
